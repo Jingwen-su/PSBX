@@ -1,0 +1,67 @@
+---
+title: "rsympy"
+author: "Jingwen SU"
+date: "12/10/2020"
+output: html_document
+---
+# Introduction
+Dans cet article, nous allons installer et utiliser **rSymPy** pour calculer les opérations symboliques dans R.
+
+
+# Installez le package rSymPy
+```{r}
+#install.packages("rSymPy")
+library(rSymPy)
+```
+
+
+# Exemple
+Ce qui suit est une démonstration:
+```{r}
+#Définissez toutes les variables de l'équation.
+Q <- Var("Q")
+n <- Var("n")
+m <- Var("m")
+g <- Var("g")
+k <- Var("k")
+Sf <- Var("Sf")
+y <- Var("y")
+
+```
+
+```{r}
+#Construisez l'équation
+sympy("expr = n*Q*(2*y*sqrt(1+m**2))**(2/3) - k*(m*y**2)**(5/3)*sqrt(Sf)")
+
+```
+
+```{r}
+#Attribuez des valeurs aux variables dans le programme distant.
+sympy("solve(expr.subs([(Q, 1.2), (n, 0.045), (m, 3.4), (Sf, 0.2), (g, 9.806), (k, 1)]), y)")
+
+```
+
+```{r}
+#Définissez la valeur de sortie.
+out <- sympy("solve(expr.subs([(Q, 1.2), (n, 0.045), (m, 3.4), (Sf, 0.2), (g, 9.806), (k, 1)]), y)")
+out <- as.numeric(unlist(strsplit(gsub("\\[|\\]", "", out), ",")))
+length(out)
+out
+```
+
+
+## rSymPy et SymPy
+
+* rSymPy, c'est accéder au système d'algèbre informatique SymPy depuis R via Jython. Cela dépend de rJython.
+
+* SymPy est une bibliothèque Python pour le calcul symbolique. Il est entièrement écrit en Python et ne dépend pas de bibliothèques externes. Son objectif est de devenir un système d'algèbre informatique complet.
+
+**Ils sont très différents, ne les confondez pas!!!**
+
+
+
+
+
+
+
+
