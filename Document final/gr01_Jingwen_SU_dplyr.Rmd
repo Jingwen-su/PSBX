@@ -1,0 +1,93 @@
+---
+title: "dplyr"
+author: "Jingwen SU"
+date: "12/9/2020"
+output: html_document
+---
+
+# introduction
+Dans cet article, nous allons vous présenter comment utiliser le package **dplyr**. Afin d'approfondir notre compréhension, nous importerons l'ensemble de données "birthwt" dans le package **MASS** pour une démonstration.
+
+# Installez dplyr
+```{r}
+## install.packages("tidyverse")
+## install.packages("dplyr")
+library(tidyverse)
+library(dplyr)
+```
+Faites attention aux informations de conflit (Conflits) fournies lorsque vous importez le package tidyverse. Cela vous indique que dplyr couvre les fonctions du package de base R. Si vous souhaitez utiliser ces fonctions après avoir chargé le paquet tidyverse, vous devez utiliser les noms complets des fonctions stats :: filter () et stats :: lag () pour les appeler.
+
+
+# arrange () : Réorganiser les lignes
+
+La fonction arrange () fonctionne de la même manière que filter (), mais au lieu de sélectionner des lignes, elle change l'ordre des lignes. Il utilise un bloc de données et une série de variables de colonne ordonnées (ou d'expressions plus complexes) en entrée. Si vous indiquez plusieurs noms de colonnes, les autres colonnes sont triées en conséquence.
+```{r}
+library(MASS)#birthwt
+head(birthwt)
+# arrange(birthwt,age,lwt,race)
+head(arrange(birthwt,age,lwt,race))
+```
+
+Utilisez desc () pour trier dans l'ordre inverse (ordre décroissant):
+```{r}
+# arrange(birthwt,desc(age))
+head(arrange(birthwt,desc(age)))
+```
+
+# select(): Sélectionner la colonne
+
+En général, le jeu de données original que nous analysons contient beaucoup de variables (colonnes). Le premier problème que nous devons résoudre est de restreindre la portée pour trouver les données (variables) dont nous avons besoin. select () nous permet de sous-ensemble rapidement l'ensemble de données par nom de variable.
+```{r}
+head(birthwt)
+# dplyr::select(birthwt, smoke, ui, bwt)
+head(dplyr::select(birthwt, smoke, ui, bwt))
+
+select=dplyr::select
+# select(birthwt,age:smoke)
+head(select(birthwt,age:smoke))
+
+# select(birthwt,-(age:smoke))
+head(select(birthwt,-(age:smoke)))
+
+```
+
+Il existe de nombreuses fonctions d'assistance qui peuvent être utilisées dans la fonction select ():
+* starts_with ("abc"): correspond aux noms commençant par "abc"
+* ends_with ("xui") correspond aux noms se terminant par "xui"
+* contient ("jkw") correspond aux noms contenant "jkw".
+* num_range ("x", 1: 3) correspond à x1, x2, x3.
+
+select () peut également être utilisé en conjonction avec la fonction d'assistance everything(). C'est très utile lorsque vous avez beaucoup de variables et que vous souhaitez vous déplacer au début (le plus à gauche) du bloc de données.
+```{r}
+# select(birthwt,age,everything())
+head(select(birthwt,age,everything()))
+```
+
+# summarize(): Calcule la valeur récapitulative
+summarize(), qui réduit un bloc de données en une seule ligne:
+```{r}
+summarize(birthwt,delay=mean(age,na.rm = TRUE))
+```
+
+À moins que nous n'associons summary () avec group_by (), summary () semble inutile. Cette opération transférera l'unité d'analyse de l'ensemble de données vers un seul groupe. Ensuite, lorsque vous utilisez le verbe dplyr pour opérer sur le bloc de données groupées, il effectuera automatiquement des calculs de regroupement. Par exemple, nous voulons regrouper par race pour obtenir l'âge moyen de chaque race:
+```{r}
+by_race=group_by(birthwt,race)
+summarize(by_race,delay=mean(age,na.rm = TRUE))
+
+```
+
+L'utilisation combinée de group_by () et de summary () peut effectuer des regroupements et des résumés, ce qui nous est très utile pour traiter des données multivariées.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
