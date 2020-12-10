@@ -1,7 +1,7 @@
 # PSBX
 Dossier de travail pour le cours de programmation R 
 
-##Introduction au dossier
+## Introduction au dossier
 
 **Documents finaux**: y compris la version complète des fichiers **pdf** et **.rmd**
 
