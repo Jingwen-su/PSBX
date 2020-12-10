@@ -1,0 +1,133 @@
+---
+title: "Reticulate"
+author: "Jingwen SU"
+date: "12/10/2020"
+output: html_document
+---
+# Introduction
+
+Basé sur le package Reticulate introduit lors de l'étude de rsympy, je vais expliquer et pratiquer le package Reticulate ici pour approfondir la compréhension.
+
+Le package reticulat, qui contient un ensemble complet d'outils de collaboration entre Python et R, peut être utilisé dans R et Rstudio.
+
+Les principales fonctions sont:
+
+*  Prend en charge plusieurs façons d'appeler Python dans R. Cela inclut R Markdown, le chargement de scripts Python, l'importation de modules Python et l'utilisation de Python de manière interactive dans une session R.
+
+*  Réaliser la conversion entre les objets R et Python (par exemple, entre la trame de données R et Python, la matrice R et le tableau NumPy).
+
+
+# Installation du paquet reticulate
+
+```{r}
+# install.packages("reticulate")
+library("reticulate")
+```
+
+
+## Configurer l'environnement python
+
+Il existe quatre méthodes de configuration. Ici, puisque j'utilise l'environnement Python d'anaconda3, j'utilise use_condaenv pour spécifier l'environnement Python.
+```{r}
+#Vérifiez si Python est installé sur votre système
+py_available()
+use_condaenv("/Users/jingwensu/opt/anaconda3")
+
+#Afficher l'environnement de la version de python installée et afficher les informations détaillées sur anaconda et numpy.
+py_config()
+
+#Vérifiez si Python est installé sur votre système
+py_available()
+
+```
+
+
+Si vous ne savez pas comment configurer l'environnement Python, j'ai trouvé un tutoriel sur l'Internet qui recommande une ligne de code pour installer l'environnement de miniconda, puis vous pouvez exécuter Python dans l'affaire R.
+```{r}
+#install_miniconda()
+#Installer l'environnement miniconda
+miniconda_path()#Afficher l'adresse d'installation de miniconda
+miniconda_update()#Mettre à jour l'environnement miniconda
+
+```
+
+
+# Appel de modules Python dans R
+
+```{r}
+#Appelez la fonction listdir () du module os
+os <- import("os")
+os$listdir("./")
+```
+
+
+# Installer le module python dans R
+
+```{r}
+#Installer la bibliothèque de dessin Seaborn, pip = T est de spécifier l'installation de pépin, et installer de Conda par défaut.
+py_install("seaborn")
+py_module_available("seaborn")
+
+```
+
+```{r}
+#Appelez la fonction load_dataset () du module seaborn
+sns <- import("seaborn")
+tips <- sns$load_dataset("tips")
+print(head(tips))
+```
+
+
+# Utilisation de Python dans R Markdown
+
+reticulate inclut un moteur Python pour R Markdown. Lors du chargement et de l'installation de Reticulate, le moteur Python sera activé par défaut dans R Markdown. Nous pouvons directement intégrer dans une seule session Python et exécuter des blocs Python.
+```{python}
+import seaborn as sns
+tips = sns.load_dataset("tips")
+tips.head()
+
+sns.scatterplot(x="total_bill", y="tip", data=tips, hue="smoker")
+
+```
+
+
+## Dans R markdown, les objets Python et R s'appellent
+
+1. R --> Python
+```{r}
+#Configurer certains objets R
+x <- c(1, 2, 3)
+y <- data.frame(a = c(1, 2), b = c(3, 4))
+```
+
+```{python}
+#Appelez l'objet R ci-dessus en Python
+r.x
+r.y
+
+```
+
+
+2.Python --> R
+```{python}
+#Configurer certains objets Python
+import pandas as pd
+m = [1, 2, 3]
+n = pd.DataFrame([[1, 2], [3, 4]], columns=["a", "b"])
+```
+
+```{r}
+#Appelez l'objet Python ci-dessus dans R
+py$m
+py$n
+
+```
+
+
+# Exécuter R de manière interactive dans R Console
+
+* repl_python (): entrez dans l'environnement Python
+* exit: quitte l'environnement Python
+
+
+
