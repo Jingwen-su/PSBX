@@ -1,0 +1,73 @@
+---
+title: "Résumer pour sympy"
+author: "Jingwen SU"
+date: "12/20/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+À la fin du cours, tous les étudiants ont téléchargé les documents pertinents sur Github et partagé les résultats avec nous. Afin de profiter pleinement de ces packages R sur les mathématiques, je vais lire, analyser et évaluer les articles de mes collègues pour améliorer mes lacunes.
+
+Ceci est une introduction à l'article lu dans cet article. Si vous souhaitez en savoir plus, vous pouvez rechercher des références.
+
+* **Title:** Qu''est ce que Rsympy ?
+* **Auteurs:** Théo Marié
+* **Lien sur Github:** [Théo Marié](https://github.com/theomarie78960/PSBX/blob/main/Th%C3%A9oMari%C3%A9_Rsympy.pdf)
+
+# Synthèse du travail en question
+
+Ceci est un article sur Rsympy. L'auteur présente d'abord le package d'installation, propose d'installer les deux autres logiciels pour l'aider, puis montre comment l'installer. Dans la deuxième partie, l'auteur montre comment utiliser Rsympy pour le calcul. Il a choisi quatre fonctions à démontrer: logarithme, sin et cos, et simplification et limit. Grâce à la démonstration, nous pouvons apprendre à l'utiliser de manière plus intuitive.
+
+# Contenu principal et explication
+
+## 1. Installation
+Parce que SymPy est spécial, il a besoin de deux packages d'installation pour vous aider, nous devons donc installer trois packages d'installation à l'avance lors de son utilisation.
+
+code montrer comme ci-dessous:
+
+install.packages("rSymPy")
+install.packages("rJython")
+install.packages("rJava")
+
+## 2.les fonctions
+
+* **LOGARYTHME**
+```{r}
+library(rSymPy)
+sympy("var('x')")
+sympy("y = log(x)")
+sympy("y")
+```
+
+* **COS ET SIN**
+```{r}
+library(rSymPy)
+sympy("y = x <- 0.5 + 0.25*sin(x) + 1/3*cos(x) - 1/3*sin(2*x) - 0.25*cos(2*x)")
+```
+
+* **SIMPLIFICATION D'UN NOMBRE DECIMAL**
+```{r}
+library(rSymPy)
+sympy("nsimplify(4.242640687119286)")
+```
+
+* **LES LIMITES**
+```{r}
+library(rSymPy)
+sympy("limit(1/x, x, oo)")
+```
+
+
+# Evaluation et résumer
+
+Selon mes normes, dans l'ensemble, il s'agit d'un article moyen supérieur. Il a un bon format et une introduction générale à rSympy. Chacun de ses exemples de fonction est expliqué clairement. Mais il n'a pas de bibliographie à la fin, et les fonctions impliquées sont relativement simples et manquent d'une certaine profondeur.
+Je pense que c'est un bon choix comme article d'enseignement de base. Il est très approprié pour les novices à lire, simple et clair.
+
+

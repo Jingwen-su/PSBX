@@ -1,0 +1,26 @@
+---
+title: "Critères d'évaluation"
+author: "Jingwen SU"
+date: "12/20/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+
+**Il y a cinq critères:**
+
+1. Que ce soit le format du contenu du document est beau et clair.
+
+2. Qu'il y ait une introduction claire au contenu du sujet.
+
+3. Y a-t-il des exemples?
+
+4. Que vous ayez votre propre expérience compréhension ou l'utilisation sur le sujet.
+
+5. Le contenu complet et logique. (Y compris le titre, l'annexe, la bibliothèque, etc.)

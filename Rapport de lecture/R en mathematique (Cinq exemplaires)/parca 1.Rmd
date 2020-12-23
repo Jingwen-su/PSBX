@@ -1,0 +1,66 @@
+---
+title: "Résumer pour tutoriel pracma"
+author: "Jingwen SU"
+date: "12/20/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+À la fin du cours, tous les étudiants ont téléchargé les documents pertinents sur Github et partagé les résultats avec nous. Afin d'utiliser ces packages d'installation de R de manière plus complète, je vais lire, analyser et évaluer les articles de mes collègues pour améliorer mes lacunes.
+
+Ceci est une introduction à l'article lu dans cet article. Si vous souhaitez en savoir plus, vous pouvez rechercher des références.
+
+* **Title:** Tutoriel pracma
+* **Auteurs:** Tarik HAKAM
+* **Lien sur Github:** [Tarik HAKAM](https://github.com/T-Hak/PSBX/tree/main/Tutoriel%20pracma)
+
+# Synthèse du travail en question
+
+Ceci est un article sur pracma. L'auteur utilise le package d'installation "pracma" à travers deux exemples.
+
+Pour le premier cas, il s'agit de Quadrature Hermite-Gauss. L'auteur introduit d'abord le concept de cette fonction et en donne la forme de base. Après cela, l'auteur a essayé d'exécuter le code dans R pour les calculs. La fonction prédéfinie "gaussHermite (n)" dans le package d'installation pracma est utilisée. Afin d'approfondir la compréhension, l'auteur a réalisé deux démonstrations de calcul du simple au difficile.
+
+Pour le deuxième cas, il s'agit d'Approximation de Tchebytchev. De même, l'auteur introduit d'abord les concepts associés, puis exécute les calculs de code dans l'environnement R. Ici, il approximer sin ( x ) avec l'approximation de Tchebytchev sur [− π, π ]. Il utilise la fonction "chebApprox" pour la comparaison dans le suivi, et tire finalement une conclusion et l'illustre par une image.
+
+# Contenu principal et explication
+
+## 1.Le premier cas: Quadrature Hermite-Gauss
+
+Tout d'abord, son introduction m'a fait revoir les connaissances sur la Quadrature Hermite-Gauss. Et il nous a présenté le package pracma a une fonction prédéfinie: **gaussHermite (n)**. Cela nous permet de l'utiliser directement. Si nous voulons mieux maîtriser cette fonction, nous devons nous entraîner plusieurs fois.
+
+Pour les fonctions mathématiques complexes, nous devons faire un usage raisonnable de ces fonctions, qui peuvent nous aider à calculer la réponse plus rapidement et à éviter les erreurs. C'est très pratique pour nous, il peut nous aider à gagner du temps.
+
+```{r}
+#Gauss-Hermite Quadrature Formula
+#gaussHermite(n) avec ici n = 17 
+ library("pracma")
+f <- gaussHermite(17)
+sum(f$w) #=> 1.77245385090552 == sqrt(pi)
+```
+
+## 2.Le deuxième cas: Approximation de Tchebytchev
+
+De même, le deuxième cas est la même logique de résolution de problèmes, mais la fonction est différente. Ici nous avons besoin de prêter attention à l'utilisation de la fonction chebApprox:
+
+```{r eval=TRUE}
+#Compare
+#chebCoeff(f, a, b, n)
+p2 <- chebCoeff(sin, -pi, pi, 9)
+```
+
+# Evaluation et résumer
+
+Selon mes critères, je pense que cela est un article moyen. Son format est très concis et il a une bibliographie à la fin, et il utilise du latex pour compiler les équations mathématiques qu'il contient. En outre, il utilise la fonction avec deux exemples et montre le processus de calcul en détail.
+Mais je pense qu'il devrait introduire Pracma au début. Bien que les lecteurs sachent calculer ces deux fonctions, ils n'ont toujours pas une compréhension complète des fonctions du package d'installation.
+
+
+
+
+

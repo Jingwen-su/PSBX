@@ -1,0 +1,22 @@
+---
+title: "évaluation objective"
+author: "Jingwen SU"
+date: "12/20/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# évaluation objective
+
+Grâce à cette lecture, j'ai beaucoup gagné. Qu'il s'agisse de connaissances ou de détails, je dois beaucoup m'améliorer.
+
+Par exemple, il y a cette fois de nombreuses petites erreurs de formatage dans mon propre document. Bien que cela n'ait aucun effet sur le contenu, cela le rendra visuellement inconfortable. De plus, j'ai réalisé l'importance de la bibliographie. La bibliographie peut aider les autres à mieux comprendre votre article. En même temps, lorsque vous cliquez à nouveau sur ce document après un certain laps de temps, elle peut vous aider à vous rappeler vos idées d'écriture et à faire des suppléments. C'est une très bonne méthode, et j'ai abandonné faute de temps, ce qui est très faux. En termes de contenu, je devrais donner une brève introduction au sujet au début. Bien que vous sachiez à quoi cela sert, le lecteur peut ne pas le savoir.
+
+Bien qu'il y ait des points à améliorer, je pense que mon article présente encore de nombreux avantages. Par exemple, mon article est très riche et complet. Par rapport à certains articles, je l'ai fait un bon travail dans la sélection du contenu, pas trop simple ni trop difficile, et procéder étape par étape. De plus, l'explication est également très détaillée.
+
+Bref, cela m'a permis de découvrir mes propres faiblesses et forces, et m'a également permis de trouver une direction à améliorer dans mes futurs devoirs. Permettez-moi de grandir.

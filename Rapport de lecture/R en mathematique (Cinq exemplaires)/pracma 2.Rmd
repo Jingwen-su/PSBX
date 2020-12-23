@@ -1,0 +1,64 @@
+---
+title: "Résumer pour Pracma 2"
+author: "Jingwen SU"
+date: "12/20/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+À la fin du cours, tous les étudiants ont téléchargé les documents pertinents sur Github et partagé les résultats avec nous. Afin de profiter pleinement de ces packages d'installation R sur les mathématiques, je vais lire, analyser et évaluer les articles de mes collègues pour améliorer mes lacunes.
+
+Ceci est une introduction à l'article lu dans cet article. Si vous souhaitez en savoir plus, vous pouvez rechercher des références.
+
+* **Title:** Pracma
+* **Auteurs:** Xueting YIN
+* **Lien sur Github:** [Xueting YIN](https://github.com/yinxueting/PSBX/blob/main/gr01_xueting_yin_pracma.pdf)
+
+# Synthèse du travail en question
+
+Cet article est une introduction à l'utilisation de Pracma. L'auteur a d'abord présenté le concept du package d'installation Pracma et le code d'installation dans la première partie. Puis dans la deuxième partie, certaines de ces fonctions sont données à titre d'exemple et mises en mathématiques réelles pour le calcul.
+
+Y compris: "and" et "or", "eye", "ones", "zeros", "blanks", "ceil", "fix", "randperm".
+
+# Contenu principal et explication
+
+## 1.Installation
+
+L'auteur présente le package d'installation Pracma: il a est un package qui fournit un grand nombre de fonctions d’analyse numérique et d’algèbre linéaire, d’optimisation numérique, d’équations différentielles, de séries chronologiques, ainsi que de certaines fonctions
+mathématiques spéciales bien connues.
+
+Installation est :
+
+```{r}
+# install.packages("pracma")
+library(pracma)
+```
+
+## 2.La foction
+
+* **and(A, B), or(A, B): ** Effectue une opération logique sur les tableaux A et B et renvoie un tableau contenant des éléments définis sur l’un ou l’autre 1 (TRUE) ou 0 (FALSE),
+
+* **eye(n, m = n), ones(n, m = n), zeros(n, m = n): ** Matrice de taille n x m. La valeur par défaut est une matrice carrée si m est manquant. Pas de baisse de dimensions; si n = 1, renvoie toujours une matrice et non un vecteur.
+
+* **blanks: **créer une chaîne de caractères vides
+
+* **ceil(n): ** Il est un alias pour plafond () et arrondit au plus petit entier égal ou supérieur à n.
+
+* **fix(n): ** Il tronque les valeurs vers 0 et est un alias pour trunc ().
+
+* **randperm(a, k): ** Il génère une permutation aléatoire de k des éléments a, si a est un vecteur, ou de 1: a si a est un seul entier.
+
+
+# Evaluation et résumer
+
+Selon mes normes, dans l'ensemble, il s'agit d'un article moyen supérieur. Il a un bon format et a une introduction générale à Pracma. Chacun de ses exemples de fonction est expliqué clairement. Mais il n'a pas de bibliographie à la fin, et les fonctions impliquées sont relativement simples et manquent d'une certaine profondeur.
+Je pense que c'est un bon choix comme article d'enseignement de base. Il est très approprié pour les novices à lire, simple et clair.
+
+

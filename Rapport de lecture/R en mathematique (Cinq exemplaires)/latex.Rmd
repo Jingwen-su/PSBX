@@ -1,0 +1,223 @@
+---
+title: "Résumer pour tutoriel_latex"
+author: "Jingwen SU"
+date: "12/20/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r, include=FALSE}
+options(tinytex.verbose = TRUE)
+```
+
+# Introduction
+
+À la fin du cours, tous les étudiants ont téléchargé les documents pertinents sur Github et partagé les résultats avec nous. Afin d'utiliser ces packages d'installation de R de manière plus complète, je vais lire, analyser et évaluer les articles de mes collègues pour améliorer mes lacunes.
+
+Ceci est une introduction à l'article lu dans cet article. Si vous souhaitez en savoir plus, vous pouvez rechercher des références.
+
+* **Title:** Guide pratique de LATEX sous R Markdown
+* **Auteurs:** Jiayue Liu
+* **Lien sur Github:** [Jiayue Liu](https://github.com/liu-jiayue/psbx/blob/main/tutoriel_latex/tutoriel_latex.pdf)
+
+# Synthèse du travail en question
+
+Dans cet article, l'auteur explique l'utilisation et le but de LaTeX dans R Markdown.
+
+Tout d'abord, l'auteur a expliqué la grammaire et l'utilisation de LaTeX. En second lieu, l'auteur a expliqué et démontré différents symboles, personnages, environnements, etc., un par un. Enfin, l'auteur explique et démontre l'insertion et le traitement des graphiques. De plus, l'auteur a également joint intimement une bibliographie afin que nous puissions en savoir plus.
+
+Pour les symboles et les caractères, l'auteur introduit principalement la représentation des symboles numériques, des lettres grecques et des délimiteurs dans LaTeX. En outre, il comprend également certaines fonctions et méthodes mathématiques couramment utilisées pour le contrôle de l'espacement.
+
+Dans la partie environnement, l'auteur donne des exemples de quatre environnements mathématiques couramment utilisés: environnement d'équation, environnements split et gather, environnement align, et l'environnement array et les matrices.
+
+Pour l'insertion et le traitement des graphiques, l'auteur nous a présenté comment utiliser l'environnement graphique pour insérer et ajuster des images.
+
+# Contenu principal et explication
+
+## 1.À propos de LaTeX
+
+L'environnement d'utilisation de LaTeX est très différent de l'environnement d'utilisation de R. Par conséquent, nous devons l'apprendre et le comprendre séparément. À travers cet article, nous résumons l'utilisation générale de LaTeX. comme suit:
+
+* **Commentaire** : Les commentaires dans \LaTeX\ sont marqués par le signe `%`.
+
+* **Espace** : \LaTeX\ ne prend pas en compte ni espace ni tabulation.Ainsi dans l'exemple suivant :
+  
+  ```
+  \begin{equation*}
+  S       =       \pi % On peut mettre autant d'espace qu'on veut...
+  r^2 % ...ou même sauter à la ligne
+  \end{equation*}
+  ```
+  Le résultat restera le même :
+  
+  \begin{equation*}
+  S       =       \pi       r^2 % on peut mettre autant d'espace qu'on veut
+  \end{equation*}
+  
+* **Caractères fonctionnels** : \LaTeX\ considère que les caractères suivants sont par défaut le début d'une commande à exécuter : `# $ % ^ & _ { } ~ \`. Ainsi, pour les écrire sans erreur, il faut impérativement mettre un _backslash_ (`\`). Par exemple, pour que \LaTeX\ comprenne que le `%` signifie le pourcentage, il faut écrire `\%`.
+
+* Il existe deux modes typographiques sous \LaTeX\ qui chacun détermine l'affichage du résultat de sortie.
+**Ordinary Math Mode** : le contenu mathématique commence par `\(` ou `$` et finit par `\)` ou `$` et est mélangé avec le texte.
+**Display Math Mode** : le contenu mathématique est détaché du reste du texte ; cela commence par `\[` et se termine par `\]`. On peut considérer cette syntaxe comme une version abrégée de `\begin{equation}` et `\end{equation}`.
+
+* Dans LaTeX, il y a **deux concepts clés :** environnement et commande.
+
+**environnement**
+
+Un environnement \LaTeX\ est un espace de travail dans lequel nous pouvons procéder à l'écriture des contenus mathématiques. L'environnement le plus souvent utilisé est `equation` (auquel nous reviendrons plus tard). Un environnement pourrait (**et devrait!**) être ouvert et fermé avec les commandes `\begin{}` et `\end{}`.
+
+```
+\begin{equation}
+...
+\end{equation}
+```
+
+La différence entre les environnements repose sur la typographie. Les équations situées dans un environnement sont automatiquement numérotées. Pour désactiver la numérotation, on pourra utiliser la version "étoilée" telle que `equation*`.
+
+**Commande**
+
+on pourra donc citer la formule \ref{S} en tapant `\ref{S}`:
+```
+(...) la formule \ref{S} (...)
+```
+(...) la formule \ref{S} (...)
+
+Voici un cas d'usage dans l'environnement `equation`.
+
+```
+\begin{equation}
+\label{S}
+S=\pi r^2
+\end{equation}
+```
+ce qui produit :
+
+\begin{equation}
+\label{S}
+S=\pi r^2
+\end{equation}
+
+## 2.Symboles et caractères
+
+Le point auquel nous devons prêter attention est de se rappeler comment ils sont écrits. Si vous en utilisez plus, vous vous en souviendrez naturellement.
+
+## 3.Environnements
+
+Je pense que c'est celle qui m'intéresse le plus et la partie la plus importante. Il faut que nous nous en souvenions.
+
+**L'environnement `equation`:** il permet d'insérer une seule formule dans le texte.
+```
+\begin{equation}
+  S=\pi r^2
+\end{equation}
+```
+
+\begin{equation}
+  S=\pi r^2
+\end{equation}
+
+Notez bien que la formule est automatiquement numérotée, ce qui n'est pas le cas avec `\[` et `\]` ou `$$`.
+
+**Les environnements `split` et `gather`:** 
+Quand on a besoin de séparer une longue formule en plusieurs étapes pour que ce soit plus lisible. Pour ce faire, nous allons créer l'environnement `split` à l'intérieur de l'environnement `equation`. Exemple :
+
+```
+\begin{equation*}
+\begin{split}
+  y & = (a+b)^2 \\
+    & = a^2 + b^2 + 2ab \\
+    & \geq 0 \,.
+\end{split}
+\end{equation*}
+```
+
+\begin{equation*}
+\begin{split}
+  y & = (a+b)^2 \\
+    & = a^2 + b^2 + 2ab \\
+    & \geq 0 \,.
+\end{split}
+\end{equation*}
+
+**N.B.** L'usage de `&` et de `\\` permet d'indiquer l'alignement et les sauts de lignes.
+
+Si on veut associer plusieurs formules sous-ajacentes, on peut utiliser l'environnement `gather` sans passer par `equation`. Exemple :
+
+```
+\begin{gather}
+  \sum_i{F_i} = \frac{d_v}{d_t} = 0 \\
+  F = M \* a                        \\
+  \sum{F_{A,B}} = \-\sum{F_{B,A}}
+\end{gather}
+```
+
+\begin{gather}
+  \sum_i{F_i} = \frac{d_v}{d_t} = 0 \\
+  F = M \* a                        \\
+  \sum{F_{A,B}} = \-\sum{F_{B,A}}
+\end{gather}
+
+**L'environnement `align`:** Tout comme `split`, cet environnement permet de séparer les équations en plusieurs étapes mais en s'assurant qu'elles soient alignées. Mais contrairement à `split`, les équations dans `align` sont numérotés individuellement.
+
+```
+\begin{align}
+F(z) & = \sum^\infty_{n=0} f_n z^n \\
+& = z + \sum^\infty_{n=2}(f_{n-1}+f_{n-2}) z^n \\
+& = z + F(z)/z + F(z)/z^2 \\
+\nonumber
+& = z / (1 - z - z^2) \,.
+\end{align}
+```
+
+\begin{align}
+F(z) & = \sum^\infty_{n=0} f_n z^n \\
+& = z + \sum^\infty_{n=2}(f_{n-1}+f_{n-2}) z^n \\
+& = z + F(z)/z + F(z)/z^2 \\
+\nonumber
+& = z / (1 - z - z^2) \,.
+\end{align}
+
+**N.B.** La commande `\nonumber` met en pause la numérotation automatique.
+
+**L'environnement `array` et les matrices:** Avec l'environnement `array`, on peut très bien écrire des matrices, mais il est obligatoire de le mettre entre `\left(` et `\right)`.
+
+```
+\[
+\left(
+\begin{array}{ccc}
+     x & y & z
+  \\ \alpha & \beta & \gamma
+\end{array}
+\right)
+\]
+```
+\[
+\left(
+\begin{array}{ccc}
+     x & y & z
+  \\ \alpha & \beta & \gamma
+\end{array}
+\right)
+\]
+
+## 4.Insertion et manipulation des graphiques
+
+il faut introduire le package graphicx.
+
+**l'environnement `figure`:** pour assure une bonne représentation de l'image dans le texte.
+
+Il existe **trois manières d’agir** sur la taille d’un graphique.
+* scale=ratio, où ratio est un nombre positif ou négatif, permet
+de changer la taille globale de la figure ;
+* width=dimen permet d’imposer la largeur du graphique ;
+* height=dimen permet d’imposer la hauteur du graphique.
+
+Avec l'option `angle=ndegre` on peut réaliser également des rotations.
+
+
+# Evaluation et résumer
+
+Selon mes critères, je pense que c'est le meilleur de ces 12. Il ne présente presque pas de lacunes. Format parfait, explication détaillée et exemples. Il est le seul parmi les 12 articles à avoir une couverture et une table des matières, ainsi qu'un en-tête et un numéro de page. J'aime beaucoup son écriture de référence, il peut me donner une compréhension plus profonde du latex. Pour moi, il n'a aucun défaut, est très complet et est le meilleur article.
+
+

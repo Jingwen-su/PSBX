@@ -1,0 +1,301 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Mon analyse R en mathématiques},
+  pdfauthor={Jingwen SU},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Mon analyse R en mathématiques}
+\author{Jingwen SU}
+\date{12/20/2020}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+À la fin du cours, tous les étudiants ont téléchargé les documents
+pertinents sur Github et partagé les résultats avec nous. Afin de
+profiter pleinement de ces packages R sur les mathématiques, je vais
+lire, analyser et évaluer les articles de mes collègues pour améliorer
+mes lacunes.
+
+Ceci est une introduction à l'article lu dans cet article. Si vous
+souhaitez en savoir plus, vous pouvez rechercher des références.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Title:} pacma
+\item
+  \textbf{Auteurs:} Jingwen SU
+\item
+  \textbf{Lien sur Github:}
+  \href{https://github.com/Jingwen-su/PSBX/blob/main/Document\%20final/gr01_Jingwen_SU_pacman.pdf}{Jingwen
+  SU}
+\end{itemize}
+
+\hypertarget{synthuxe8se-du-travail-en-question}{%
+\section{Synthèse du travail en
+question}\label{synthuxe8se-du-travail-en-question}}
+
+Ceci est un article d'introduction sur pacma. L'auteur a donné une brève
+introduction sur le contenu de l'article au début. Dites au lecteur que
+dans l'article, elle essaiera d'utiliser le package Pracma pour la
+différence polynomiale, l'ajustement et l'ajustement linéaire.
+
+Dans la deuxième partie, l'auteur a présenté le code d'installation du
+package Pracma. Après cela, l'auteur a commencé à effectuer des calculs
+de fonction.
+
+Pour Différence et ajustement polynomial, il a introduit trois
+fonctions: polyfit, polyfix et polyvalent. D'un certain point de vue, le
+premier et le second sont similaires.
+
+Pour Ajustement linéaire, l'auteur a d'abord passé au peigne fin le
+processus d'ajustement linéaire en détail, puis a démontré en fonction
+de chaque étape.
+
+\hypertarget{contenu-principal-et-explication}{%
+\section{Contenu principal et
+explication}\label{contenu-principal-et-explication}}
+
+\hypertarget{installer-le-package-pracma}{%
+\subsection{1. Installer le package
+pracma}\label{installer-le-package-pracma}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#install.packages("parcma")}
+\KeywordTok{library}\NormalTok{(pracma)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{les-fonctions}{%
+\subsection{2. Les fonctions}\label{les-fonctions}}
+
+\begin{itemize}
+\item
+  \textbf{polyfit (x, y, n)} génère des coefficients polynomiaux, et sa
+  puissance est triée de haut en bas, et n \textless(longueur (x) -1)
+  ajuste automatiquement les données.
+\item
+  \textbf{polyfix (x, y, n, xfix, yfix)} est également un paramètre de
+  coefficient polynomial. Les paramètres xfix et yfix représentent les
+  coordonnées du point de référence, ce qui signifie que la courbe
+  d'ajustement doit passer ce point.
+\item
+  \textbf{polyvalent (p, x)} Selon le vecteur de coefficient polynomial
+  P, générer un polynôme, puis calculer la valeur de la coordonnée x en
+  fonction du polynôme.
+\end{itemize}
+
+\hypertarget{ajustement-linuxe9aire}{%
+\subsection{3. Ajustement linéaire}\label{ajustement-linuxe9aire}}
+
+Ici, nous devons maîtriser sa pensée logique. Dans un projet ou un
+calcul, il n'y a souvent pas de package d'installation unique impliqué.
+Nous devons apprendre à combiner plusieurs packages d'installation et à
+maîtriser les fonctions fréquemment utilisées.
+
+L'auteur raconte un processus complet de traitement des données. Pour
+l'ajustement linéaire, lorsque nous obtenons les données:
+
+\begin{itemize}
+\item
+  Le premier est le prétraitement des données (y compris l'élimination
+  des valeurs aberrantes, la normalisation des données: suppression
+  d'unités, soustraction de la valeur minimale, division par la valeur
+  maximale, de sorte que les données soient dans l'intervalle (0, 1)).
+\item
+  Puis dessinez un nuage de points et établissez une relation
+  fonctionnelle basée sur la distribution des points (pas nécessairement
+  une fonction linéaire).
+\item
+  Ensuite, selon la relation de fonction, la relation de fonction
+  linéaire est dérivée.
+\item
+  Selon la relation de fonction linéaire, effectuez un ajustement
+  linéaire, résolvez le coefficient de corrélation, apportez la solution
+  dans la fonction d'origine et dessinez l'image de la fonction.
+\end{itemize}
+
+La démonstration est la suivante:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{11}\NormalTok{)}
+\NormalTok{black <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{}
+    \DecValTok{2} \OperatorTok{*}\StringTok{ }\NormalTok{x }\OperatorTok{*}\StringTok{ }\KeywordTok{exp}\NormalTok{(}\FloatTok{0.5} \OperatorTok{*}\StringTok{ }\NormalTok{x) }\OperatorTok{+}\StringTok{ }\KeywordTok{runif}\NormalTok{(}\KeywordTok{length}\NormalTok{(x), }\DataTypeTok{min =} \DecValTok{-1}\NormalTok{, }\DataTypeTok{max =} \DecValTok{1}\NormalTok{)}
+\NormalTok{\}}
+\NormalTok{x_test <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{5}\NormalTok{, }\FloatTok{0.2}\NormalTok{)}
+\NormalTok{y_test <-}\StringTok{ }\KeywordTok{black}\NormalTok{(x_test)}
+ 
+\NormalTok{rigion <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ x_test, }\DataTypeTok{y =}\NormalTok{ y_test)  }\CommentTok{# Données prétraitées}
+\KeywordTok{ggplot}\NormalTok{(rigion, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{color =} \StringTok{"blue"}\NormalTok{)  }\CommentTok{# Dessinez un nuage de points à partir duquel vous pouvez construire un modèle de fonction exponentielle}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{mon-R-en-mathematique_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Modèle de fonction：y = c1*t*exp(c2*t), Linéarisation des fonctions：lny = lnc1 + lnt + c2*t}
+\CommentTok{# Substituer des variables et transformer des inconnues en coefficients de fonctions linéaires：lny -lnt = c2*t + k,}
+\CommentTok{# La variable indépendante est t, la variable dépendante est lny-lnt et le coefficient est calculé par ajustement linéaire：k, c2}
+\NormalTok{fun_y <-}\StringTok{ }\KeywordTok{log}\NormalTok{(y_test, }\DataTypeTok{base =} \KeywordTok{exp}\NormalTok{(}\DecValTok{1}\NormalTok{)) }\OperatorTok{-}\StringTok{ }\KeywordTok{log}\NormalTok{(x_test, }\DataTypeTok{base =} \KeywordTok{exp}\NormalTok{(}\DecValTok{1}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: NaNs produced
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fun_x <-}\StringTok{ }\NormalTok{x_test}
+\NormalTok{relation <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(fun_y }\OperatorTok{~}\StringTok{ }\NormalTok{fun_x)  }\CommentTok{# Établir une relation linéaire}
+\KeywordTok{print}\NormalTok{(relation)  }\CommentTok{# Afficher le coefficient de relation, les résultat: c2 = 0.5583, k = 0.4780}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = fun_y ~ fun_x)
+## 
+## Coefficients:
+## (Intercept)        fun_x  
+##      0.4780       0.5583
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{k <-}\StringTok{ }\NormalTok{relation[[}\DecValTok{1}\NormalTok{]][}\DecValTok{1}\NormalTok{]}
+\NormalTok{c2 <-}\StringTok{ }\NormalTok{relation[[}\DecValTok{1}\NormalTok{]][}\DecValTok{2}\NormalTok{]}
+ 
+\CommentTok{# Apportez les valeurs de c2 et k pour trouverc1 = e^k}
+\NormalTok{c1 <-}\StringTok{ }\KeywordTok{exp}\NormalTok{(k)}
+\CommentTok{# Le modèle de fonction est：}
+\NormalTok{fun_last <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{}
+\NormalTok{    c1 }\OperatorTok{*}\StringTok{ }\NormalTok{x }\OperatorTok{*}\StringTok{ }\KeywordTok{exp}\NormalTok{(c2 }\OperatorTok{*}\StringTok{ }\NormalTok{x)}
+\NormalTok{\}}
+\CommentTok{# Dessinez le graphique ajusté}
+ \KeywordTok{ggplot}\NormalTok{(rigion, }\KeywordTok{aes}\NormalTok{(x, y)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{color =} \StringTok{"blue"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{3}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{stat_function}\NormalTok{(}\DataTypeTok{fun =}\NormalTok{ fun_last, }\DataTypeTok{color =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{mon-R-en-mathematique_files/figure-latex/unnamed-chunk-2-2.pdf}
+
+\hypertarget{evaluation-et-ruxe9sumer}{%
+\section{Evaluation et résumer}\label{evaluation-et-ruxe9sumer}}
+
+Selon mes normes, je pense que c'est un article moyen.
+
+Tout d'abord, son format est très concis et il y a des explications
+détaillées sur le contenu important. De plus, le contenu proposé a
+également été démontré. Le cadre logique est très bon.
+
+Cependant, il n'a pas donné une introduction générale au package
+d'installation, et n'a pas donné de bibliographie, de sorte que les gens
+ne pouvaient pas le comprendre davantage.
+
+\end{document}
